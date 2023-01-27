@@ -33,3 +33,6 @@ function splitIndex(arr, type){
 
 // Generate a random array
 let randArray = Array.from({length: 100}, () => Math.floor(Math.random() * 50) + 1);
+// Get even and odd index
+let evenIndex = splitIndex(randArray, 'even');
+let oddIndex = splitIndex(randArray, 'odd');
