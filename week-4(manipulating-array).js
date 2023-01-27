@@ -7,5 +7,29 @@ function printArray(arr){
     return("[\n" + arr.join(", ") + "\n]");
 }
 
+
+/**
+ * Split index by type
+ * @param array arr
+ * @param string type
+ * @response string result
+ *  */
+function splitIndex(arr, type){
+    let result = [];
+    for(let i = 0; i < arr.length; i++){
+       if (type == "even") {
+          if (i %2 == 0)  {
+             result.push(arr[i]);
+          }
+       } else if (type == "odd") {
+          if (i %2 != 0) {
+             result.push(arr[i]); 
+          }
+       }
+    }
+    return result;
+ }
+
+
 // Generate a random array
 let randArray = Array.from({length: 100}, () => Math.floor(Math.random() * 50) + 1);
