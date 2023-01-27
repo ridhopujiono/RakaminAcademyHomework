@@ -30,6 +30,23 @@ function splitIndex(arr, type){
     return result;
  }
 
+/**
+ * to find min and max
+ * @param array arr
+ * @param string type
+ * @response string result
+ *  */
+function findMaxMin(arr, type){
+    let result = arr[0];
+    for(var i = 0; i < arr.length; i++){
+          result = (type == "max" ?  arr[i] > result : arr[i] < result) ?
+              arr[i] 
+          : 
+             result;
+    }
+    return result;
+ }
+
 
 // Generate a random array
 let randArray = Array.from({length: 100}, () => Math.floor(Math.random() * 50) + 1);
