@@ -1,3 +1,21 @@
+const printColor = (color, text) => {
+   switch (color) {
+     case "red":
+       console.log("\x1b[31m%s\x1b[0m", text);
+       break;
+     case "yellow":
+       console.log("\x1b[33m%s\x1b[0m", text);
+       break;
+     case "green":
+       console.log("\x1b[32m%s\x1b[0m", text);
+       break;
+      case "blue":
+      console.log("\x1b[36m%s\x1b[0m", text);
+      break;
+     default:
+       console.log(text);
+   }
+ };
 /**
  * to print array become string
  * @param array arr
@@ -34,7 +52,7 @@ function splitIndex(arr, type){
  * to find min and max
  * @param array arr
  * @param string type
- * @response string result
+ * @response int result
  *  */
 function findMaxMin(arr, type){
     let result = arr[0];
@@ -46,6 +64,21 @@ function findMaxMin(arr, type){
     }
     return result;
  }
+
+/**
+ * to find min and max
+ * @param array arr
+ * @response int total
+ *  */
+ 
+function getTotal(arr){
+   let total = 0;
+   for(var i = 0; i < arr.length; i++){
+      total += arr[i];
+   }
+
+   return total;
+}
 
 
 // Generate a random array
@@ -59,21 +92,34 @@ let maxArrayOdd = findMaxMin(oddIndex, 'max');
 // min
 let minArrayEven = findMaxMin(randArray, 'min');
 let minArrayOdd = findMaxMin(randArray, 'min');
+// Total even odd
+let evenTotal = getTotal(evenIndex);
+let oddTotal = getTotal(oddIndex);
 
-console.log("============================================");
-console.info("SEMUA ARRAY");
+
+printColor("green", "==================================================================================================");
+printColor("yellow", "SEMUA ARRAY");
 console.log(printArray(randArray));
-console.info("ARRAY DENGAN [INDEX] GENAP");
+printColor("yellow","ARRAY DENGAN [INDEX] GENAP [INDEX KE - 0,2,4,5,6 .....]");
 console.log(printArray(evenIndex));
-console.info("ARRAY DENGAN [INDEX] GANJIL");
+printColor("yellow", "ARRAY DENGAN [INDEX] GANJIL [INDEX KE - 1,3,5,7,9 .....]");
 console.log(printArray(oddIndex));
-console.log("============================================");
-console.info("MAKSIMUM ARRAY PADA [INDEX] ARRAY GENAP");
+
+printColor("green", "==================================================================================================");
+
+printColor("green", "==================================================================================================");
+printColor("yellow", "MAKSIMUM ARRAY PADA [INDEX] ARRAY GENAP");
 console.log(maxArrayEven);
-console.info("MAKSIMUM ARRAY PADA [INDEX] ARRAY GANJIL");
+printColor("yellow", "MAKSIMUM ARRAY PADA [INDEX] ARRAY GANJIL");
 console.log(maxArrayOdd);
-console.info("MINIMUM ARRAY PADA [INDEX] ARRAY GENAP");
+printColor("yellow", "MINIMUM ARRAY PADA [INDEX] ARRAY GENAP");
 console.log(minArrayEven);
-console.info("MINIMUM ARRAY PADA [INDEX] ARRAY GANJIL");
+printColor("yellow", "MINIMUM ARRAY PADA [INDEX] ARRAY GANJIL");
 console.log(minArrayOdd);
-console.log("============================================");
+printColor("green", "==================================================================================================");
+printColor("green", "==================================================================================================");
+printColor("yellow", "TOTAL NILAI PADA ARRAY YANG INDEX-NYA GENAP");
+console.log(evenTotal);
+printColor("yellow", "TOTAL NILAI PADA ARRAY YANG INDEX-NYA GANJIL");
+console.log(oddTotal);
+printColor("green", "==================================================================================================");
