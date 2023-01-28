@@ -66,7 +66,7 @@ function findMaxMin(arr, type){
  }
 
 /**
- * to find min and max
+ * to get total
  * @param array arr
  * @response int total
  *  */
@@ -76,8 +76,22 @@ function getTotal(arr){
    for(var i = 0; i < arr.length; i++){
       total += arr[i];
    }
-
    return total;
+}
+/**
+ * to get average
+ * @param array arr
+ * @response int total
+ *  */
+ 
+function getAverage(arr){
+   let total = 0;
+   let counter = 0;
+   for(var i = 0; i < arr.length; i++){
+      counter++;
+      total += arr[i];
+   }
+   return total / counter;
 }
 
 
@@ -95,6 +109,9 @@ let minArrayOdd = findMaxMin(randArray, 'min');
 // Total even odd
 let evenTotal = getTotal(evenIndex);
 let oddTotal = getTotal(oddIndex);
+// Get average even odd
+let evenAverage = getAverage(evenIndex);
+let oddAverage = getAverage(oddIndex);
 
 
 printColor("green", "==================================================================================================");
@@ -122,4 +139,8 @@ printColor("yellow", "TOTAL NILAI PADA ARRAY YANG INDEX-NYA GENAP");
 console.log(evenTotal);
 printColor("yellow", "TOTAL NILAI PADA ARRAY YANG INDEX-NYA GANJIL");
 console.log(oddTotal);
+printColor("yellow", "RATA RATA NILAI PADA ARRAY YANG INDEX-NYA GENAP");
+console.log(evenAverage);
+printColor("yellow", "RATA RATA NILAI PADA ARRAY YANG INDEX-NYA GANJIL");
+console.log(oddAverage);
 printColor("green", "==================================================================================================");
