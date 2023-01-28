@@ -112,6 +112,8 @@ let oddTotal = getTotal(oddIndex);
 // Get average even odd
 let evenAverage = getAverage(evenIndex);
 let oddAverage = getAverage(oddIndex);
+// compare array
+let compareArray = compareArray(minArrayEven, minArrayOdd, maxArrayEven, maxArrayOdd, evenTotal, oddTotal, evenAverage, oddAverage);
 
 
 printColor("green", "==================================================================================================");
