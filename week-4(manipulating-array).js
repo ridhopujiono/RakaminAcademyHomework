@@ -81,7 +81,7 @@ function getTotal(arr){
 /**
  * to get average
  * @param array arr
- * @response int total
+ * @response int total/counter
  *  */
  
 function getAverage(arr){
@@ -92,6 +92,50 @@ function getAverage(arr){
       total += arr[i];
    }
    return total / counter;
+}
+
+/**
+ * compare array to get new knowledge
+ * @param any minArrayEven, minArrayOdd, maxArrayEven, maxArrayOdd, evenTotal, oddTotal, evenAverage, oddAverage
+ * @response any
+ *  */
+ 
+function compareArray(minArrayEven, minArrayOdd, maxArrayEven, maxArrayOdd, evenTotal, oddTotal, evenAverage, oddAverage){
+   if (minArrayEven > minArrayOdd) {
+      printColor("red","\t - Nilai minimum array yang [INDEX-NYA] Genap lebih besar dari array yang [INDEX-NYA] Ganjil");
+   } else {
+      if (minArrayEven == minArrayOdd) {
+         printColor("red","\t - Nilai minimum array yang [INDEX-NYA] Ganjil sama dengan array yang [INDEX-NYA] Index Genap");
+      }else{
+         printColor("red","\t - Nilai minimum array yang [INDEX-NYA] Ganjil lebih besar dari array yang [INDEX-NYA] Index Genap");
+      }
+   }
+   if (maxArrayEven > maxArrayOdd) {
+      printColor("red","\t - Nilai maksimum array yang [INDEX-NYA] Genap lebih besar dari array yang [INDEX-NYA] Ganjil");
+   } else {
+      if (maxArrayEven == maxArrayOdd) {
+         printColor("red","\t - Nilai maksimum array yang [INDEX-NYA] Ganjil sama dengan array yang [INDEX-NYA] Index Genap");
+      }else{
+         printColor("red","\t - Nilai maksimum array yang [INDEX-NYA] Ganjil lebih besar dari array yang [INDEX-NYA] Index Genap");
+      }
+   }
+   
+   if(evenTotal == oddTotal){
+      printColor("red","\t - Nilai total array yang [INDEX-NYA] Genap sama dengan array yang [INDEX-NYA] Ganjil");
+   }else{
+      printColor("red","\t - Nilai total array yang [INDEX-NYA] Genap tidak sama dengan array yang [INDEX-NYA] Ganjil");
+   }
+
+   if (evenAverage > oddAverage) {
+      printColor("red","\t - Nilai rata-rata array yang [INDEX-NYA] Genap lebih besar dari array yang [INDEX-NYA] Ganjil");
+   } else {
+      if (evenAverage == oddAverage) {
+         printColor("red","\t - Nilai rata-rata array yang [INDEX-NYA] Ganjil sama dengan array yang [INDEX-NYA] Index Genap");
+      }else{
+         printColor("red","\t - Nilai rata-rata array yang [INDEX-NYA] Ganjil lebih besar dari array yang [INDEX-NYA] Index Genap");
+      }
+   }
+   return "";
 }
 
 
@@ -112,8 +156,7 @@ let oddTotal = getTotal(oddIndex);
 // Get average even odd
 let evenAverage = getAverage(evenIndex);
 let oddAverage = getAverage(oddIndex);
-// compare array
-let compareArray = compareArray(minArrayEven, minArrayOdd, maxArrayEven, maxArrayOdd, evenTotal, oddTotal, evenAverage, oddAverage);
+
 
 
 printColor("green", "==================================================================================================");
@@ -145,4 +188,10 @@ printColor("yellow", "RATA RATA NILAI PADA ARRAY YANG INDEX-NYA GENAP");
 console.log(evenAverage);
 printColor("yellow", "RATA RATA NILAI PADA ARRAY YANG INDEX-NYA GANJIL");
 console.log(oddAverage);
+printColor("green", "==================================================================================================");
+printColor("green", "==================================================================================================");
+printColor("yellow", "KOMPARASI DUA ARRAY");
+// compare array
+let compareArrayResult = compareArray(minArrayEven, minArrayOdd, maxArrayEven, maxArrayOdd, evenTotal, oddTotal, evenAverage, oddAverage);
+console.log(compareArrayResult);
 printColor("green", "==================================================================================================");
