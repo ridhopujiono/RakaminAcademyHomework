@@ -6,6 +6,18 @@ class Employee {
         this.age = age;
         this.pocket_money = pocket_money;
     }
+    storeData(name, age, pocket_money) {
+        // Call function for filter data
+        let filter_data = this.filterData(name, age, pocket_money);
+        if (filter_data) {
+            let saveToArray = this.saveToArray(name, age, pocket_money);
+            let update_table = this.updateTable(name, age, pocket_money);
+            let update_resume = this.updateResume();
+            return true;
+        } else {
+            return false;
+        }
+    }
 }
 
 // Call object class
