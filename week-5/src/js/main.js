@@ -221,5 +221,10 @@ form.onsubmit = async function (event) {
         }
         alert_container.classList.add('alert-success');
         alert_container.innerHTML = 'Berhasil input data!';
+
+        // Remove current input value
+        name.value = '';
+        age.value = '';
+        pocket_money.value = '';
     }
 }
