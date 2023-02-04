@@ -1,6 +1,11 @@
 // Class Employee
 class Employee {
-
+    constructor(name, age, pocket_money) {
+        this.data = [];
+        this.name = name;
+        this.age = age;
+        this.pocket_money = pocket_money;
+    }
 }
 
 // Call object class
