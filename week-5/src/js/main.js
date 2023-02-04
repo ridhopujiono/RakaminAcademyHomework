@@ -6,6 +6,30 @@ class Employee {
         this.age = age;
         this.pocket_money = pocket_money;
     }
+    filterData(name, age, pocket_money) {
+        let li;
+        let element_ul = document.createElement("ul");
+        let alert_container = document.querySelector("#alert-container");
+
+
+        if (name.length < 10) {
+            alert_container.classList.add('alert-danger');
+            alert_container.innerHTML = "Nama minimal 10 karakter";
+            return false;
+        }
+        if (age < 25) {
+            alert_container.classList.add('alert-danger');
+            alert_container.innerHTML = "Umur minimal 25 Tahun"
+            return false;
+        }
+        if (pocket_money < 100000 || pocket_money > 1000000) {
+            alert_container.classList.add('alert-danger');
+            alert_container.innerHTML = "Uang sangu harus antara 100 ribu dan 1 juta"
+            return false;
+        }
+
+        return true;
+    }
     storeData(name, age, pocket_money) {
         // Call function for filter data
         let filter_data = this.filterData(name, age, pocket_money);
