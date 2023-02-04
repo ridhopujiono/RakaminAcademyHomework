@@ -1,0 +1,4 @@
+https://github.com/ridhopujiono/RakaminAcademyHomework.git
+Kakak bisa "git pull origin master". Jika sudah pernah clone sebelumnya. Jika belum bisa langsung clone saja
+
+**mengacu tugas week ini maka folder pengerjaan ada di folder "week-5"
