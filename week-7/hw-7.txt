@@ -1,0 +1,6 @@
+Link repo:
+https://github.com/ridhopujiono/RakaminAcademyHomework
+atau jika sudah pernah clone sebelumnya maka "git pull origin master"
+
+keterangan:
+folder week-7 ya mas
