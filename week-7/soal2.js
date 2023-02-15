@@ -65,23 +65,14 @@ source=9.67.116.98:8000] ceased
 `;
 
 function doRead() {
-    fs.readFile('./log.txt', 'utf8', (err, data) => {
-        if (err) {
-            console.error(err);
-        }
-        console.log(data);
-    });
+    const data = fs.readFileSync('./log.txt', 'utf8');
+    console.log(data);
 }
 
 // Menulis file dengan payload default
-function doWrite() {
-    fs.writeFile('./log.txt', payload, err => {
-        if (err) {
-            console.error(err);
-        }
-        // file written successfully
-        console.log("Written succesfully")
-    });
+function doWrite(text) {
+    fs.writeFileSync('./log.txt', text);
+    console.log("Written succesfully")
 }
 // Menambah konten baru pada log yang sudah ada
 function doAppend(text) {
@@ -89,19 +80,17 @@ function doAppend(text) {
     // Untuk generate 03/22 08:54:53 text
     text = `${date.getMonth()}/${date.getFullYear().toString().substr(2, 2)} ${date.getHours()}:${date.getMinutes()}:${date.getSeconds()} ${text}`;
 
-    fs.appendFile('./log.txt', text, err => {
-        if (err) {
-            console.error(err);
-        }
-        // done!
-        console.log("Append Succesfully");
-    });
+    fs.appendFileSync('./log.txt', text);
+    console.log("Append Succesfully");
 }
 
 
-// Read
+
+// Panggil fungsi write, disini saya menggunakan parameter yang isinya template dari payload. bisa di custom juga
+doWrite(payload);
+
+// Jika ingin menambah baris baru 
+doAppend(`INFO   :......delete user with id 9478597 with 0 error`);
+
+// Read data dalam file
 doRead();
-// Panggil fungsi
-doWrite();
-// Jika ingin menambah baris baru hapus komentar dan bisa custon isi parameternya
-//doAppend(`INFO   :......delete user with id 9478597 with 0 error`);
