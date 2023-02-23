@@ -1,0 +1,10 @@
+###
+GET http://localhost:3000/actor
+###
+GET http://localhost:3000/film
+###
+GET http://localhost:3000/film/id/100
+###
+GET http://localhost:3000/category
+###
+GET http://localhost:3000/film/category/Horror

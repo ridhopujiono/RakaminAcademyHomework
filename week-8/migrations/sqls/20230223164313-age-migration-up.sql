@@ -1,0 +1,1 @@
+ALTER TABLE actor ADD COLUMN IF NOT EXISTS age int 
