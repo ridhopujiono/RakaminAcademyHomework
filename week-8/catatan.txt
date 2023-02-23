@@ -1,0 +1,12 @@
+Link:
+https://github.com/ridhopujiono/RakaminAcademyHomework 
+
+Catatan:
+Pengerjaan saya di folder week-8
+Jika sudah clone sebelumnya, bisa "git pull origin master"
+
+Command:
+"npm start" :  Untuk start program menggunakan nodemod
+"npm seed" : Melakukan seeding data ke database tabel actor
+"db-migrate up" : Melakukan migrasi file xxxxx-up.js
+"db-migrate down" : Melakukan migrasi file xxxxx-down.js
