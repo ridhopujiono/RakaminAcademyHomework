@@ -7,7 +7,7 @@ npm install
 ## Import DB
 
 Postgres DB
-[https://github.com/fathy17/dokumen-pembanding-2/blob/master/movies-database.sql] https://github.com/fathy17/dokumen-pembanding-2/blob/master/movies-database.sql
+[Click this](https://github.com/fathy17/dokumen-pembanding-2/blob/master/movies-database.sql)
 
 ## Usage
 
