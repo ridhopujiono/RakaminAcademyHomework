@@ -12,8 +12,17 @@ async function isAdmin(id) {
 exports.auth = async function (req, res, next) {
   const authHeader = req.headers.authorization;
   if (authHeader) {
-    const token = authHeader;
-    jwt.verify(token, SECRET_KEY.value, async (err, user) => {
+    let token = "";
+    if(authHeader.toString().startsWith('Bearer ') || authHeader.toString().startsWith('Basic ')) {
+        token = authHeader.split(" ")[1];
+    }else{
+      if(authHeader.toString().startsWith(' Bearer ') || authHeader.toString().startsWith(' Basic ')){
+        token = authHeader.split(" ")[2];
+      }else{
+        token = authHeader;
+      }
+    }   //split the header and get the token
+      jwt.verify(token, SECRET_KEY.value, async (err, user) => {
 
       if (err) {
         return res.status(403).json({ message: "Invalid token" });

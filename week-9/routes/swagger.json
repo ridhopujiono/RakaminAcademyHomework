@@ -20,6 +20,19 @@
       "name": "User"
     }
   ],
+  "components": {
+    "securitySchemes": {
+      "basicAuth": {
+        "type": "http",
+        "scheme": "basic"
+      }
+    }
+  },
+  "security": [
+    {
+      "basicAuth": []
+    }
+  ],
   "paths": {
     "/login": {
       "post": {
@@ -31,7 +44,7 @@
               "schema": {
                 "type": "object",
                 "example": {
-                  "email": "aruf@mail.com",
+                  "email": "ridho@mail.com",
                   "password": "123"
                 }
               }
@@ -80,15 +93,29 @@
     "/movies": {
       "get": {
         "tags": ["Movies"],
-        "summary": "Movies",
+        "summary": "Movies Paginate",
+
         "parameters": [
           {
-            "name": "Authorization",
-            "in": "header",
+            "name": "page",
+            "in": "query",
             "schema": {
-              "type": "string"
+              "type": "integer"
             },
-            "example": "{{token}}"
+            "example": "2"
+          },
+          {
+            "name": "limit",
+            "in": "query",
+            "schema": {
+              "type": "integer"
+            },
+            "example": "10"
+          }
+        ],
+        "security": [
+          {
+            "basicAuth": []
           }
         ],
         "responses": {
@@ -214,7 +241,7 @@
     "/users": {
       "get": {
         "tags": ["User"],
-        "summary": "Users",
+        "summary": "Users Paginate",
         "parameters": [
           {
             "name": "Authorization",
@@ -223,6 +250,22 @@
               "type": "string"
             },
             "example": "{{token}}"
+          },
+          {
+            "name": "page",
+            "in": "query",
+            "schema": {
+              "type": "integer"
+            },
+            "example": "1"
+          },
+          {
+            "name": "limit",
+            "in": "query",
+            "schema": {
+              "type": "integer"
+            },
+            "example": "10"
           }
         ],
         "responses": {

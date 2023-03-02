@@ -2,9 +2,26 @@ const model = require('../models/movieModel.js'); // User Model
 
 exports.movies = async function (req, res) {
     const result = await model.all();
-    res.status(200).json({
-        data: result
-    });
+
+    if(req.query.page && req.query.limit){
+        const page = parseInt(req.query.page) || 1;
+        const limit = parseInt(req.query.limit) || 10;
+
+        const startIndex = (page - 1) * limit;
+        const endIndex = page * limit;
+
+        const data = result.slice(startIndex, endIndex);
+        res.status(200).json({
+            data: data,
+            currentPage: page,
+            totalPages: Math.ceil(result.length / limit)
+        });
+    }else{
+        res.status(200).json({
+            data: result
+        });
+    }
+
 }
 exports.getMovie = async function (req, res) {
     const result = await model.findBy('id', req.params.id);
