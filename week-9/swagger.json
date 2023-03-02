@@ -1,0 +1,13 @@
+{
+    "swagger": "2.0",
+    "info": {
+      "title": "User and Movie API Reference",
+      "version": "1.0.0"
+    },
+    "host": "localhost:3000",
+    "basePath": "/",
+    "schemes": [
+      "http"
+    ],
+    "paths": {}
+  }

@@ -3,26 +3,33 @@ const jwt = require('jsonwebtoken'); // JsonWebToken
 const SECRET_KEY = require('../config/secret.js'); // Secret Key for JWT
 const model = require('../models/userModel.js'); // User Model
 
-exports.register = async function (req, res) {
+exports.store = async function (req, res) {
     let { email, password, gender, role } = req.body;
-    try {
-        const checkEmailExists = await model.findBy('email', email);
-        if (checkEmailExists.length > 0) {
-            res.status(403).send({
-                message: 'Youre email already in use'
-            });
-        } else {
-            password = bcrypt.hashSync(password.toString(), 10);
-            const createUser = await model.create([email, password, gender, role]);
 
-            res.status(201).send({
-                message: `Youre registered as ${role}${role == 'Admin' ? `. You can access any endppoint do you want` : `. You cannot access any endppoint do you want. You must registed as Admin role`}`
-            });
+    if(!(email && password && gender && role)){
+        res.status(400).json({
+            message: "Please fill all the fields!"
+        });
+    }else{
+        try {
+            const checkEmailExists = await model.findBy('email', email);
+            if (checkEmailExists.length > 0) {
+                res.status(403).send({
+                    message: 'Youre email already in use'
+                });
+            } else {
+                password = bcrypt.hashSync(password.toString(), 10);
+                const createUser = await model.create([email, password, gender, role]);
+    
+                res.status(201).send({
+                    message: `Registered as ${role}${role == 'Admin' ? `. This role can access any endppoint` : `. This role cannot access any endppoint. Must registed as Admin role first`}`
+                });
+            }
+        } catch (error) {
+            res.status(500).json({
+                message: error.message
+            })
         }
-    } catch (error) {
-        res.status(500).json({
-            message: error.message
-        })
     }
 }
 exports.login = async function (req, res) {
@@ -49,6 +56,10 @@ exports.login = async function (req, res) {
                 message: 'Invalid credentials'
             });
         }
+    }else{
+        res.status(403).send({
+            message: 'Email not found'
+        });
     }
 }
 
@@ -63,19 +74,6 @@ exports.getUser = async function (req, res) {
     res.status(200).json({
         data: result
     });
-}
-exports.store = async function (req, res) {
-    let { email, password, gender, role } = req.body;
-    try {
-        const create = await model.create([email, password, gender, role]);
-        res.status(201).json({
-            message: "User Added Successfuly!"
-        });
-    } catch (error) {
-        res.status(500).json({
-            message: error.message
-        })
-    }
 }
 
 exports.update = async function (req, res) {
@@ -93,8 +91,15 @@ exports.update = async function (req, res) {
 }
 
 exports.delete = async function (req, res) {
-    const result = await model.delete('id', req.params.id);
-    res.status(200).json({
-        message: "User deleted successfuly!"
-    });
+    const checkId = await model.findBy('id', req.params.id);
+    if(checkId.length > 0){
+        const result = await model.delete('id', req.params.id);
+        res.status(200).json({
+            message: "User deleted successfuly!"
+        });
+    }else{
+        res.status(404).json({
+            message: "User not found!"
+        });
+    }
 }
