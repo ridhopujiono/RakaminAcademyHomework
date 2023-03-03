@@ -1,7 +1,8 @@
 {
   "openapi": "3.0.0",
   "info": {
-    "title": "week-9",
+    "title": "API DOCUMENTATION",
+    "description": "1. You must registered, go to the [Register API](http://127.0.0.1:3000/api-docs/#/Login%20And%20Register/post_register)\n2. Then login and copy the token\n 3. Paste the token into Authorize Button (same like request at Header with name accessToken: token)",
     "version": "1.0.0"
   },
   "servers": [
@@ -22,21 +23,24 @@
   ],
   "components": {
     "securitySchemes": {
-      "basicAuth": {
-        "type": "http",
-        "scheme": "basic"
+      "accessToken": {
+        "name": "accessToken",
+        "type": "apiKey",
+        "in": "header"
       }
     }
   },
   "security": [
     {
-      "basicAuth": []
+      "accessToken": []
     }
   ],
   "paths": {
     "/login": {
       "post": {
-        "tags": ["Login And Register"],
+        "tags": [
+          "Login And Register"
+        ],
         "summary": "Login",
         "requestBody": {
           "content": {
@@ -63,7 +67,9 @@
     },
     "/register": {
       "post": {
-        "tags": ["Login And Register"],
+        "tags": [
+          "Login And Register"
+        ],
         "summary": "Register",
         "requestBody": {
           "content": {
@@ -92,9 +98,10 @@
     },
     "/movies": {
       "get": {
-        "tags": ["Movies"],
+        "tags": [
+          "Movies"
+        ],
         "summary": "Movies Paginate",
-
         "parameters": [
           {
             "name": "page",
@@ -115,7 +122,7 @@
         ],
         "security": [
           {
-            "basicAuth": []
+            "accessToken": []
           }
         ],
         "responses": {
@@ -128,7 +135,9 @@
         }
       },
       "post": {
-        "tags": ["Movies"],
+        "tags": [
+          "Movies"
+        ],
         "summary": "POST movies",
         "requestBody": {
           "content": {
@@ -143,14 +152,9 @@
             }
           }
         },
-        "parameters": [
+        "security": [
           {
-            "name": "Authorization",
-            "in": "header",
-            "schema": {
-              "type": "string"
-            },
-            "example": "{{token}}"
+            "accessToken": []
           }
         ],
         "responses": {
@@ -165,7 +169,9 @@
     },
     "/movies/{id}": {
       "put": {
-        "tags": ["Movies"],
+        "tags": [
+          "Movies"
+        ],
         "summary": "UPDATE movies",
         "requestBody": {
           "content": {
@@ -182,20 +188,17 @@
         },
         "parameters": [
           {
-            "name": "Authorization",
-            "in": "header",
-            "schema": {
-              "type": "string"
-            },
-            "example": "{{token}}"
-          },
-          {
             "name": "id",
             "in": "path",
             "schema": {
               "type": "string"
             },
             "required": true
+          }
+        ],
+        "security": [
+          {
+            "accessToken": []
           }
         ],
         "responses": {
@@ -208,17 +211,11 @@
         }
       },
       "delete": {
-        "tags": ["Movies"],
+        "tags": [
+          "Movies"
+        ],
         "summary": "DELETE movies",
         "parameters": [
-          {
-            "name": "Authorization",
-            "in": "header",
-            "schema": {
-              "type": "string"
-            },
-            "example": "{{token}}"
-          },
           {
             "name": "id",
             "in": "path",
@@ -226,6 +223,11 @@
               "type": "string"
             },
             "required": true
+          }
+        ],
+        "security": [
+          {
+            "accessToken": []
           }
         ],
         "responses": {
@@ -240,17 +242,11 @@
     },
     "/users": {
       "get": {
-        "tags": ["User"],
+        "tags": [
+          "User"
+        ],
         "summary": "Users Paginate",
         "parameters": [
-          {
-            "name": "Authorization",
-            "in": "header",
-            "schema": {
-              "type": "string"
-            },
-            "example": "{{token}}"
-          },
           {
             "name": "page",
             "in": "query",
@@ -268,6 +264,11 @@
             "example": "10"
           }
         ],
+        "security": [
+          {
+            "accessToken": []
+          }
+        ],
         "responses": {
           "200": {
             "description": "Successful response",
@@ -278,7 +279,9 @@
         }
       },
       "post": {
-        "tags": ["User"],
+        "tags": [
+          "User"
+        ],
         "summary": "POST User",
         "requestBody": {
           "content": {
@@ -294,14 +297,9 @@
             }
           }
         },
-        "parameters": [
+        "security": [
           {
-            "name": "Authorization",
-            "in": "header",
-            "schema": {
-              "type": "string"
-            },
-            "example": "{{token}}"
+            "accessToken": []
           }
         ],
         "responses": {
@@ -316,7 +314,9 @@
     },
     "/users/{id}": {
       "put": {
-        "tags": ["User"],
+        "tags": [
+          "User"
+        ],
         "summary": "UPDATE users",
         "requestBody": {
           "content": {
@@ -332,20 +332,17 @@
         },
         "parameters": [
           {
-            "name": "Authorization",
-            "in": "header",
-            "schema": {
-              "type": "string"
-            },
-            "example": "{{token}}"
-          },
-          {
             "name": "id",
             "in": "path",
             "schema": {
               "type": "string"
             },
             "required": true
+          }
+        ],
+        "security": [
+          {
+            "accessToken": []
           }
         ],
         "responses": {
@@ -358,17 +355,11 @@
         }
       },
       "delete": {
-        "tags": ["User"],
+        "tags": [
+          "User"
+        ],
         "summary": "DELETE users",
         "parameters": [
-          {
-            "name": "Authorization",
-            "in": "header",
-            "schema": {
-              "type": "string"
-            },
-            "example": "{{token}}"
-          },
           {
             "name": "id",
             "in": "path",
@@ -376,6 +367,11 @@
               "type": "string"
             },
             "required": true
+          }
+        ],
+        "security": [
+          {
+            "accessToken": []
           }
         ],
         "responses": {

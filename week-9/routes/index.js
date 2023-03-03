@@ -8,6 +8,12 @@ const swaggerDocument = require('./swagger.json');
 const userController = require('../controllers/usersController.js');
 const movieController = require('../controllers/moviesController.js');
 const middleware = require('../middleware/middleware.js').auth;
+
+// Access Root redirect to API DOCS
+router.get('/', function (req, res) {
+    res.redirect('/api-docs')
+});
+
 // Login Routes
 router.post('/login', userController.login);
 router.post('/register', userController.store);
